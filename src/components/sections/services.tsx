@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
 import { X } from 'lucide-react';
 import { useLanguage } from '@/context/language-context';
 
@@ -79,7 +80,7 @@ const ServiceModal = ({
         onClick={(e) => e.stopPropagation()}
       >
         <div className="relative h-48 overflow-hidden">
-          <img src={image} alt={service.name} className="w-full h-full object-cover" />
+          <Image src={image} alt={service.name} fill className="object-cover" sizes="448px" />
           <button 
             onClick={onClose}
             className="absolute top-3 right-3 bg-white/90 rounded-full p-1.5 hover:bg-white transition-colors"

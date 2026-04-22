@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import NextImage from 'next/image';
 import { useLanguage } from '@/context/language-context';
 
 const HeroSection = () => {
@@ -14,19 +15,29 @@ const HeroSection = () => {
       {/* Background Layer */}
         <div className="absolute inset-0">
           {/* Desktop image */}
-          <div 
-              className="absolute inset-0 bg-cover bg-[center_70%] scale-x-[-1] hidden md:block"
-            style={{
-              backgroundImage: `url('/images/hero-desktop.png')`
-            }}
-          />
+          <div className="absolute inset-0 hidden md:block -scale-x-100">
+            <NextImage
+              src="/images/hero-desktop.png"
+              alt=""
+              fill
+              priority
+              quality={90}
+              className="object-cover object-[center_70%]"
+              sizes="100vw"
+            />
+          </div>
           {/* Mobile image */}
-          <div 
-              className="absolute inset-0 bg-cover bg-center md:hidden"
-            style={{
-              backgroundImage: `url('/images/hero-mobile.png')`
-            }}
-          />
+          <div className="absolute inset-0 md:hidden">
+            <NextImage
+              src="/images/hero-mobile.png"
+              alt=""
+              fill
+              priority
+              quality={90}
+              className="object-cover object-center"
+              sizes="100vw"
+            />
+          </div>
         {/* Subtle dark overlay for contrast */}
         <div className="absolute inset-0 bg-black/30" />
       </div>

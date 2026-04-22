@@ -4,10 +4,6 @@ import React, { useState, useCallback } from 'react';
 import Image from 'next/image';
 import { useLanguage } from '@/context/language-context';
 
-function getModalSrc(src: string) {
-  return src;
-}
-
 const galleryImages = [
   {
     src: '/images/gallery-1.jpg',
@@ -76,10 +72,6 @@ const GallerySection = () => {
                   key={index}
                   className="aspect-square relative group overflow-hidden cursor-pointer"
                   onClick={() => openModal(index)}
-                  onMouseEnter={() => {
-                    const img = new window.Image();
-                    img.src = getModalSrc(image.src);
-                  }}
                 >
                   <div className="relative w-full h-full">
                     <Image
@@ -110,14 +102,15 @@ const GallerySection = () => {
               &times;
             </button>
             <div
-              className="relative max-w-3xl max-h-[85vh] w-full"
+              className="relative max-w-3xl max-h-[85vh] w-full aspect-square"
               onClick={(e) => e.stopPropagation()}
             >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={getModalSrc(galleryImages[selectedImage].src)}
-                  alt={galleryImages[selectedImage].alt}
-                className="w-full h-full max-h-[85vh] object-contain"
+              <Image
+                src={galleryImages[selectedImage].src}
+                alt={galleryImages[selectedImage].alt}
+                fill
+                className="object-contain"
+                sizes="(max-width: 768px) 100vw, 896px"
               />
             </div>
           </div>
