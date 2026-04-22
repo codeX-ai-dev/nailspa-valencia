@@ -94,7 +94,6 @@ export default function AboutSection() {
                       width={800}
                       height={600}
                       className="w-full h-full object-cover"
-                      loading={index === 0 ? "eager" : "lazy"}
                     />
                   </div>
                 ))}
