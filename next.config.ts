@@ -8,6 +8,7 @@ const nextConfig: NextConfig = {
         hostname: 'images.unsplash.com',
       },
     ],
+    minimumCacheTTL: 31536000,
   },
   typescript: {
     ignoreBuildErrors: true,
